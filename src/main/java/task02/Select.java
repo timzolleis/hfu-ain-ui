@@ -11,7 +11,6 @@ public class Select {
             System.out.println((i + 1) + ". " + options[i]);
         }
         boolean isRepeatedInput = false;
-
         while (true) {
             final String selection = Input.input(isRepeatedInput ? "Please repeat your input:" : "Please select an option by providing a number:");
             if (selection.isEmpty()) {
