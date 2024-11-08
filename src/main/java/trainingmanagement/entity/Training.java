@@ -1,4 +1,4 @@
-package task04;
+package trainingmanagement.entity;
 
 import lombok.Getter;
 

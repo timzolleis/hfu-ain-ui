@@ -1,7 +1,8 @@
-package task04;
+package trainingmanagement;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import trainingmanagement.entity.Training;
 
 import java.util.HashMap;
 import java.util.HashSet;
