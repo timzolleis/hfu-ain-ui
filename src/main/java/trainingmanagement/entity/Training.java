@@ -1,6 +1,7 @@
 package trainingmanagement.entity;
 
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Map;
 import java.util.NoSuchElementException;
@@ -10,13 +11,16 @@ import java.util.Set;
 public class Training {
 
     private final Set<Training> requirements;
-    public static Map<String, Training> allTrainings;
+    @Setter
+    @Getter
+    private static Map<String, Training> allTrainings;
     private final String name;
 
     public Training(Set<Training> requirements, String name) {
         this.requirements = requirements;
         this.name = name;
     }
+
 
     public static String[] getAllNames() {
         return allTrainings.keySet().toArray(String[]::new);

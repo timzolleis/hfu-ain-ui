@@ -7,4 +7,7 @@ public class SelectTrainingC {
         return Training.getAllNames();
     }
 
+
+
+
 }

@@ -51,8 +51,8 @@ public class Clerk {
         return allClerks.values().stream().anyMatch(Clerk::isAdmin);
     }
 
-    public static boolean passwordMatches(final String username, final String password) {
-        return allClerks.get(username).getPassword().equals(password);
+    public boolean passwordMatches(final String password) {
+        return this.password.equals(password);
     }
 
     private static boolean usernameExists(final String username) {
@@ -113,8 +113,16 @@ public class Clerk {
         return true;
     }
 
-    public final boolean hasAttendedTraining() {
+    public final boolean hasAttendedTrainings() {
         return !attendedTrainings.isEmpty();
+    }
+
+    public final Boolean hasAttendedTraining(final Training training) {
+        return attendedTrainings.containsKey(training.getName());
+    }
+
+    public final Boolean hasCompletedTraining(final Training training) {
+        return completedTrainings.containsKey(training.getName());
     }
 
     public void addAttendedTraining(final Training training) {
@@ -122,9 +130,6 @@ public class Clerk {
     }
 
     public void addCompletedTraining(final Training training) {
-        if (!attendedTrainings.containsKey(training.getName())) {
-            throw new TrainingNotAttendedException(training.getName());
-        }
         attendedTrainings.remove(training.getName());
         completedTrainings.put(training.getName(), training);
     }

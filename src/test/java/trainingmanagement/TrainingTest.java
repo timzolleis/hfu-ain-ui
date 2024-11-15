@@ -15,7 +15,7 @@ class TrainingTest {
 
     @BeforeEach
     void setUp() {
-        Training.allTrainings = new HashMap<>();
+        Training.setAllTrainings(new HashMap<>());
     }
 
     @Test
