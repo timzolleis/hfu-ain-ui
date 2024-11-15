@@ -44,4 +44,8 @@ public class Training {
         return allTrainings.get(trainingName);
     }
 
+    public boolean isRequiredBy(final Training training) {
+        return training.getRequirements().contains(this);
+    }
+
 }
