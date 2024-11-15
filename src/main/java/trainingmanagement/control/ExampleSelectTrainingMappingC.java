@@ -3,10 +3,7 @@ package trainingmanagement.control;
 import trainingmanagement.entity.Clerk;
 import trainingmanagement.entity.Training;
 
-import java.util.Collection;
-import java.util.LinkedHashSet;
 import java.util.Map;
-import java.util.Set;
 
 class ExampleSelectTrainingMappingC {
     final String[] getCompletedTrainingNames(final String username) {
