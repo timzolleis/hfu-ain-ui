@@ -5,7 +5,7 @@ import java.util.Collection;
 import trainingmanagement.entity.Clerk;
 import trainingmanagement.entity.Training;
 
-class ExampleDeleteTrainingMappingC {
+public class ExampleDeleteTrainingMappingC {
 
 
     private String checkCanDeleteTrainingMapping(final Clerk Clerk, final Training trainingToDelete) {
@@ -20,7 +20,7 @@ class ExampleDeleteTrainingMappingC {
         return null;
     }
 
-    final String deleteTrainingMapping(final String clerkName, final String trainingName) {
+    public final String deleteTrainingMapping(final String clerkName, final String trainingName) {
         final Clerk clerk = Clerk.getClerk(clerkName);
         final Training training = Training.getTraining(trainingName);
         if (clerk.hasAttendedTraining(training)) {
@@ -37,11 +37,11 @@ class ExampleDeleteTrainingMappingC {
 
     }
 
-    final String[] getAttendedTrainings(final String selectedUsername) {
+    public final String[] getAttendedTrainings(final String selectedUsername) {
         return new ExampleShowTrainingMappingC().getAttendedTrainingNames(selectedUsername);
     }
 
-    final String[] getCompletedTrainings(final String selectedUsername) {
+    public final String[] getCompletedTrainings(final String selectedUsername) {
         return new ExampleShowTrainingMappingC().getCompletedTrainingNames(selectedUsername);
     }
 

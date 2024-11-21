@@ -23,6 +23,10 @@ public class Clerk {
     }
 
     public static void addClerk(final Clerk clerk) {
+        if (!Clerk.validUsername(clerk.getUsername())) {
+            throw new IllegalArgumentException("Username does not match criteria");
+        }
+
         if (!Clerk.validPassword(clerk.getPassword())) {
             throw new IllegalArgumentException("Password does not match criteria");
         }
@@ -51,12 +55,32 @@ public class Clerk {
         return allClerks.values().stream().anyMatch(Clerk::isAdmin);
     }
 
+
+    public static Clerk login(final String username, final String password, final Boolean isAdmin) {
+        if (!allClerks.containsKey(username)) {
+            throw new ClerkNotFoundException(username);
+        }
+        final Clerk clerk = allClerks.get(username);
+        if (!clerk.passwordMatches(password)) {
+            throw new InvalidPasswordException("Password does not match");
+        }
+        if (isAdmin != null && clerk.isAdmin() != isAdmin) {
+            throw new IllegalArgumentException("Role does not match");
+        }
+        return clerk;
+    }
+
     public boolean passwordMatches(final String password) {
         return this.password.equals(password);
     }
 
     private static boolean usernameExists(final String username) {
         return allClerks.containsKey(username);
+    }
+
+    private static boolean validUsername(final String username) {
+        final Pattern usernamePattern = Pattern.compile("^[A-Za-zÄÖÜäöüß_]+$");
+        return usernamePattern.matcher(username).matches();
     }
 
     private static boolean validPassword(final String password) {
@@ -108,7 +132,7 @@ public class Clerk {
             throw new ClerkNotFoundException(username);
         }
         if (allClerks.get(username).isAdmin()) {
-            return isLastAdmin();
+            return !isLastAdmin();
         }
         return true;
     }

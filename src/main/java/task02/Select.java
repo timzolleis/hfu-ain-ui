@@ -6,13 +6,13 @@ public class Select {
         System.out.println(select(options));
     }
 
-    static String select(final String[] options) {
+    public static String select(final String[] options) {
         for (int i = 0; i < options.length; i++) {
             System.out.println((i + 1) + ". " + options[i]);
         }
         boolean isRepeatedInput = false;
         while (true) {
-            final String selection = Input.input(isRepeatedInput ? "Please repeat your input:" : "Please select an option by providing a number:");
+            final String selection = Input.getString(isRepeatedInput ? "Please repeat your input:" : "Please select an option by providing a number:");
             if (selection.isEmpty()) {
                 isRepeatedInput = true;
                 System.out.println("No input detected");
@@ -29,7 +29,7 @@ public class Select {
     }
 
     private static boolean isValidIndex(final int index, final int length) {
-        return index >= 0 && index < length;
+        return index >= 0 && index <= length;
     }
 
 

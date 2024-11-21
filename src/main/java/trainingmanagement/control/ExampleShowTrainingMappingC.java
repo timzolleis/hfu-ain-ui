@@ -1,12 +1,12 @@
 package trainingmanagement.control;
 
-class ExampleShowTrainingMappingC {
+public class ExampleShowTrainingMappingC {
 
-    final String[] getCompletedTrainingNames(final String username) {
+    public final String[] getCompletedTrainingNames(final String username) {
         return new ExampleSelectTrainingMappingC().getCompletedTrainingNames(username);
     }
 
-    final String[] getAttendedTrainingNames(final String username) {
+    public final String[] getAttendedTrainingNames(final String username) {
         return new ExampleSelectTrainingMappingC().getAttendedTrainingNames(username);
     }
 

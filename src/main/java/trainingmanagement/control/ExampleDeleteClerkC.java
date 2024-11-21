@@ -2,8 +2,8 @@ package trainingmanagement.control;
 
 import trainingmanagement.entity.Clerk;
 
-class ExampleDeleteClerkC {
-    final String deleteClerk(final String username) {
+public class ExampleDeleteClerkC {
+    public final String deleteClerk(final String username) {
         try {
             Clerk.getClerk(username).delete();
 

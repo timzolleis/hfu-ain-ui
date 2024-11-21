@@ -1,6 +1,5 @@
 package task02;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -17,14 +16,14 @@ class InputTest {
     }
 
     @Test
-    void input() {
+    void getString() {
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
         final String inputHint = "Enter something:";
         final String expected = "Hello, World!";
 
         System.setIn(new ByteArrayInputStream(expected.getBytes()));
-        final String result = Input.input(inputHint);
+        final String result = Input.getString(inputHint);
         assertEquals(expected, result);
         assertEquals(inputHint + System.lineSeparator(), outContent.toString());
     }

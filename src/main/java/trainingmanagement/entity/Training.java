@@ -3,6 +3,7 @@ package trainingmanagement.entity;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Set;
@@ -13,7 +14,7 @@ public class Training {
     private final Set<Training> requirements;
     @Setter
     @Getter
-    private static Map<String, Training> allTrainings;
+    private static Map<String, Training> allTrainings = new HashMap<>();
     private final String name;
 
     public Training(Set<Training> requirements, String name) {
@@ -21,6 +22,10 @@ public class Training {
         this.name = name;
     }
 
+
+    public static void addTraining(final Training training) {
+        allTrainings.put(training.getName(), training);
+    }
 
     public static String[] getAllNames() {
         return allTrainings.keySet().toArray(String[]::new);

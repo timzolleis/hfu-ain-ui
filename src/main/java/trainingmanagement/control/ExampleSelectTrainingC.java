@@ -4,10 +4,11 @@ import trainingmanagement.entity.Clerk;
 import trainingmanagement.entity.Training;
 
 import java.util.Collection;
+import java.util.Scanner;
 import java.util.Set;
 
-class ExampleSelectTrainingC {
-    static String[] getAllNames() {
+public class ExampleSelectTrainingC {
+    public String[] getAllNames() {
         return Training.getAllNames();
     }
 
