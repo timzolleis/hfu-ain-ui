@@ -2,15 +2,15 @@ package trainingmanagement.presentation;
 
 import trainingmanagement.control.ExampleShowTrainingMappingC;
 
-public class ShowTrainingMappingsP extends GenericPresentation<ExampleShowTrainingMappingC> {
+public class ShowTrainingMappingsAUI extends GenericAUI<ExampleShowTrainingMappingC> {
 
-    public ShowTrainingMappingsP() {
+    public ShowTrainingMappingsAUI() {
         super(ExampleShowTrainingMappingC.class);
     }
 
     public void open() {
-        final SelectClerkP selectClerkP = new SelectClerkP();
-        final String clerk = selectClerkP.selectClerk();
+        final SelectClerkAUI selectClerkAUI = new SelectClerkAUI();
+        final String clerk = selectClerkAUI.selectClerk();
         try {
             final String[] completedTrainingNames = control.getCompletedTrainingNames(clerk);
             final String[] attendedTrainingNames = control.getAttendedTrainingNames(clerk);

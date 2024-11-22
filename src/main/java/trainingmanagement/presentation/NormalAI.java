@@ -3,9 +3,9 @@ package trainingmanagement.presentation;
 import java.util.Map;
 import java.util.Objects;
 
-public class ClerkP extends GeneralP {
+public class NormalAI extends GenericAI {
 
-    public ClerkP() {
+    public NormalAI() {
         super(getAvailableActions());
     }
 
@@ -21,8 +21,8 @@ public class ClerkP extends GeneralP {
 
     protected boolean handleAction(Action action) {
         if (Objects.requireNonNull(action) == Action.EDIT_CLERK) {
-            final EditClerkP editClerkP = new EditClerkP();
-            editClerkP.open(false);
+            final EditClerkAUI editClerkAUI = new EditClerkAUI();
+            editClerkAUI.open(false);
             return true;
         }
         return this.handleSharedActions(action);

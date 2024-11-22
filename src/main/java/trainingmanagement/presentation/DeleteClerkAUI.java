@@ -2,18 +2,18 @@ package trainingmanagement.presentation;
 
 import trainingmanagement.control.ExampleDeleteClerkC;
 
-public class DeleteClerkP extends GenericPresentation<ExampleDeleteClerkC> {
-    public DeleteClerkP() {
+public class DeleteClerkAUI extends GenericAUI<ExampleDeleteClerkC> {
+    public DeleteClerkAUI() {
         super(ExampleDeleteClerkC.class);
     }
 
     public void open() {
-        final SelectClerkP selectClerkP = new SelectClerkP();
-        final String[] clerkNames = selectClerkP.getClerkNames();
+        final SelectClerkAUI selectClerkAUI = new SelectClerkAUI();
+        final String[] clerkNames = selectClerkAUI.getClerkNames();
         if (clerkNames.length == 0) {
             System.out.println("No clerks to delete");
         } else {
-            final String choice = selectClerkP.selectClerk();
+            final String choice = selectClerkAUI.selectClerk();
             this.executeAndHandleError(() -> this.control.deleteClerk(choice));
         }
     }

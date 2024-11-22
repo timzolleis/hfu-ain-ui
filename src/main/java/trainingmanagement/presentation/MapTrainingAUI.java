@@ -3,20 +3,18 @@ package trainingmanagement.presentation;
 import task02.Input;
 import trainingmanagement.control.ExampleMapTrainingC;
 
-import java.util.Scanner;
+public class MapTrainingAUI extends GenericAUI<ExampleMapTrainingC> {
 
-public class MapTrainingP extends GenericPresentation<ExampleMapTrainingC> {
-
-    public MapTrainingP() {
+    public MapTrainingAUI() {
         super(ExampleMapTrainingC.class);
     }
 
     public void open() {
-        final SelectClerkP selectClerkP = new SelectClerkP();
-        final SelectTrainingP selectTrainingP = new SelectTrainingP();
+        final SelectClerkAUI selectClerkAUI = new SelectClerkAUI();
+        final SelectTrainingAUI selectTrainingAUI = new SelectTrainingAUI();
 
-        final String clerk = selectClerkP.selectClerk();
-        final String training = selectTrainingP.selectTraining();
+        final String clerk = selectClerkAUI.selectClerk();
+        final String training = selectTrainingAUI.selectTraining();
         final int choice = Input.getInteger("Enter 1 to attend training or 2 to complete training");
         final boolean isCompleted = choice == 2;
         if (isCompleted) {

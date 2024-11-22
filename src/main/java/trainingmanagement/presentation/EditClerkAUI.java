@@ -1,24 +1,23 @@
 package trainingmanagement.presentation;
 
 import task02.Input;
-import trainingmanagement.control.EditClerkC;
 import trainingmanagement.control.ExampleEditClerkC;
 
-public class EditClerkP extends GenericPresentation<ExampleEditClerkC> {
+public class EditClerkAUI extends GenericAUI<ExampleEditClerkC> {
 
 
-    public EditClerkP() {
+    public EditClerkAUI() {
         super(ExampleEditClerkC.class);
     }
 
     public void open(final boolean editAsAdmin) {
-        final SelectClerkP selectClerkP = new SelectClerkP();
-        final String[] clerkNames = selectClerkP.getClerkNames();
+        final SelectClerkAUI selectClerkAUI = new SelectClerkAUI();
+        final String[] clerkNames = selectClerkAUI.getClerkNames();
         if (clerkNames.length == 0) {
             System.out.println("No clerks to edit");
             return;
         }
-        final String selectedClerk = selectClerkP.selectClerk();
+        final String selectedClerk = selectClerkAUI.selectClerk();
         this.editClerk(selectedClerk, editAsAdmin);
     }
 

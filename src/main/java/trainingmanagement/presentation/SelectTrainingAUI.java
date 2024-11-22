@@ -3,9 +3,9 @@ package trainingmanagement.presentation;
 import task02.Select;
 import trainingmanagement.control.ExampleSelectTrainingC;
 
-public class SelectTrainingP extends GenericPresentation<ExampleSelectTrainingC> {
+public class SelectTrainingAUI extends GenericAUI<ExampleSelectTrainingC> {
 
-    public SelectTrainingP() {
+    public SelectTrainingAUI() {
         super(ExampleSelectTrainingC.class);
     }
 

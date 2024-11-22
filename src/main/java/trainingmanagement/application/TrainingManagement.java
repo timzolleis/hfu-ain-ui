@@ -2,13 +2,11 @@ package trainingmanagement.application;
 
 import trainingmanagement.entity.Clerk;
 import trainingmanagement.entity.Training;
-import trainingmanagement.presentation.AdminP;
-import trainingmanagement.presentation.ClerkP;
-import trainingmanagement.presentation.LoginP;
+import trainingmanagement.presentation.AdminAI;
+import trainingmanagement.presentation.NormalAI;
+import trainingmanagement.presentation.LoginAUI;
 
 import java.util.HashSet;
-import java.util.Map;
-import java.util.Optional;
 import java.util.Set;
 
 public class TrainingManagement {
@@ -21,25 +19,28 @@ public class TrainingManagement {
                 login();
             }
             if (clerk.isAdmin()) {
-                final AdminP adminP = new AdminP();
-                adminP.open();
+                final AdminAI adminUI = new AdminAI();
+                adminUI.open();
             } else {
-                final ClerkP clerkP = new ClerkP();
-                clerkP.open();
+                final NormalAI normalUI = new NormalAI();
+                normalUI.open();
             }
         }
     }
 
+    public static void setClerk(final Clerk clerk) {
+        TrainingManagement.clerk = clerk;
+    }
+
     private static void login() {
-        final LoginP loginP = new LoginP();
-        final Clerk loggedInClerk = loginP.open();
-        if (loggedInClerk != null) {
-            TrainingManagement.clerk = loggedInClerk;
-        } else {
-            System.out.println("Please log in to continue");
+        final LoginAUI loginAUI = new LoginAUI();
+        loginAUI.open();
+        if (clerk == null) {
             login();
         }
+
     }
+
     public static void logout() {
         clerk = null;
         login();

@@ -2,10 +2,10 @@ package trainingmanagement.presentation;
 
 import java.util.function.Supplier;
 
-public class GenericPresentation<T> {
+public class GenericAUI<T> {
     protected final T control;
 
-    public GenericPresentation(Class<T> clazz) {
+    public GenericAUI(Class<T> clazz) {
         try {
             this.control = clazz.getDeclaredConstructor().newInstance();
         } catch (Exception e) {

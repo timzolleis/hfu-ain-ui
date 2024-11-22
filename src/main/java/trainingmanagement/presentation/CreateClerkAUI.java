@@ -1,11 +1,10 @@
 package trainingmanagement.presentation;
 
 import task02.Input;
-import trainingmanagement.control.CreateClerkC;
 import trainingmanagement.control.ExampleCreateClerkC;
 
-public class CreateClerkP extends GenericPresentation<ExampleCreateClerkC> {
-    public CreateClerkP() {
+public class CreateClerkAUI extends GenericAUI<ExampleCreateClerkC> {
+    public CreateClerkAUI() {
         super(ExampleCreateClerkC.class);
     }
 

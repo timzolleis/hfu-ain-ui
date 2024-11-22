@@ -3,9 +3,9 @@ package trainingmanagement.presentation;
 
 import java.util.Map;
 
-public class AdminP extends GeneralP {
+public class AdminAI extends GenericAI {
 
-    public AdminP() {
+    public AdminAI() {
         super(getAvailableActions());
     }
 
@@ -24,13 +24,13 @@ public class AdminP extends GeneralP {
     protected boolean handleAction(Action action) {
         switch (action) {
             case Action.CREATE_CLERK -> {
-                final CreateClerkP createClerkP = new CreateClerkP();
-                createClerkP.open(true);
+                final CreateClerkAUI createClerkAUI = new CreateClerkAUI();
+                createClerkAUI.open(true);
                 return true;
             }
             case Action.EDIT_CLERK -> {
-                final EditClerkP editClerkP = new EditClerkP();
-                editClerkP.open(true);
+                final EditClerkAUI editClerkAUI = new EditClerkAUI();
+                editClerkAUI.open(true);
                 return true;
             }
             default -> {

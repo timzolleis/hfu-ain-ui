@@ -2,11 +2,10 @@ package trainingmanagement.presentation;
 
 import task02.Select;
 import trainingmanagement.control.ExampleSelectClerkC;
-import trainingmanagement.control.SelectClerkC;
 
-public class SelectClerkP extends GenericPresentation<ExampleSelectClerkC> {
+public class SelectClerkAUI extends GenericAUI<ExampleSelectClerkC> {
 
-    public SelectClerkP() {
+    public SelectClerkAUI() {
         super(ExampleSelectClerkC.class);
     }
 
