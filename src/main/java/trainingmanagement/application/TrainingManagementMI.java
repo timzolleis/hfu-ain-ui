@@ -36,20 +36,6 @@ public class TrainingManagementMI {
         TrainingManagementMI.clerk = clerk;
     }
 
-    private static void login() {
-        final LoginAUI loginAUI = new LoginAUI();
-        loginAUI.open();
-        if (clerk == null) {
-            login();
-        }
-
-    }
-
-    public static void logout() {
-        clerk = null;
-        login();
-    }
-
 
     public static void initialize() {
         //Adds a clerk and some example mappings to the software
