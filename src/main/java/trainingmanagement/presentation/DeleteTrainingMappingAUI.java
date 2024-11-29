@@ -2,7 +2,7 @@ package trainingmanagement.presentation;
 
 import trainingmanagement.control.ExampleDeleteTrainingMappingC;
 
-public class DeleteTrainingMappingAUI extends GenericAUI<ExampleDeleteTrainingMappingC> {
+public class DeleteTrainingMappingAUI extends GenericAUI<ExampleDeleteTrainingMappingC> implements AUI {
 
     public DeleteTrainingMappingAUI() {
         super(ExampleDeleteTrainingMappingC.class);

@@ -3,7 +3,7 @@ package trainingmanagement.presentation;
 import task02.Input;
 import trainingmanagement.control.ExampleMapTrainingC;
 
-public class MapTrainingAUI extends GenericAUI<ExampleMapTrainingC> {
+public class MapTrainingAUI extends GenericAUI<ExampleMapTrainingC> implements AUI{
 
     public MapTrainingAUI() {
         super(ExampleMapTrainingC.class);

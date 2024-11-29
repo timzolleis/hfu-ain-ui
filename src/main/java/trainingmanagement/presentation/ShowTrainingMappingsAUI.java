@@ -2,7 +2,7 @@ package trainingmanagement.presentation;
 
 import trainingmanagement.control.ExampleShowTrainingMappingC;
 
-public class ShowTrainingMappingsAUI extends GenericAUI<ExampleShowTrainingMappingC> {
+public class ShowTrainingMappingsAUI extends GenericAUI<ExampleShowTrainingMappingC> implements AUI {
 
     public ShowTrainingMappingsAUI() {
         super(ExampleShowTrainingMappingC.class);

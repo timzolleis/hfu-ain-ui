@@ -1,6 +1,8 @@
 package trainingmanagement.presentation;
 
-public enum Action {
+public enum UseCase {
+    LOGIN,
+    EXIT,
     CREATE_CLERK,
     DELETE_CLERK,
     EDIT_CLERK,

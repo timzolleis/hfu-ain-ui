@@ -9,22 +9,13 @@ public class NormalAI extends GenericAI {
         super(getAvailableActions());
     }
 
-    private static Map<String, Action> getAvailableActions() {
+    private static Map<String, Class<? extends AUI>> getAvailableActions() {
         return Map.of(
-                "Edit a clerk", Action.EDIT_CLERK,
-                "Map a training to a clerk", Action.MAP_TRAINING_TO_CLERK,
-                "Delete a training mapping", Action.DELETE_TRAINING_MAPPING,
-                "Show training mappings", Action.SHOW_TRAINING_MAPPINGS,
-                "Logout", Action.LOGOUT
+                "Edit a clerk", NormalEditClerkAUI.class,
+                "Map a training to a clerk", MapTrainingAUI.class,
+                "Delete a training mapping", DeleteTrainingMappingAUI.class,
+                "Show training mappings", ShowTrainingMappingsAUI.class,
+                "Logout", LogoutAUI.class
         );
-    }
-
-    protected boolean handleAction(Action action) {
-        if (Objects.requireNonNull(action) == Action.EDIT_CLERK) {
-            final EditClerkAUI editClerkAUI = new EditClerkAUI();
-            editClerkAUI.open(false);
-            return true;
-        }
-        return this.handleSharedActions(action);
     }
 }

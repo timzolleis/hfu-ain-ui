@@ -1,22 +1,26 @@
 package trainingmanagement.application;
 
+import lombok.Getter;
 import trainingmanagement.entity.Clerk;
 import trainingmanagement.entity.Training;
 import trainingmanagement.presentation.AdminAI;
 import trainingmanagement.presentation.NormalAI;
 import trainingmanagement.presentation.LoginAUI;
+import trainingmanagement.presentation.PublicAI;
 
 import java.util.HashSet;
 import java.util.Set;
 
-public class TrainingManagement {
+public class TrainingManagementMI {
+    @Getter
     private static Clerk clerk;
 
     public static void main(String[] args) {
         initialize();
         while (true) {
-            if (clerk == null) {
-                login();
+            while (clerk == null) {
+                final PublicAI publicAI = new PublicAI();
+                publicAI.open();
             }
             if (clerk.isAdmin()) {
                 final AdminAI adminUI = new AdminAI();
@@ -29,7 +33,7 @@ public class TrainingManagement {
     }
 
     public static void setClerk(final Clerk clerk) {
-        TrainingManagement.clerk = clerk;
+        TrainingManagementMI.clerk = clerk;
     }
 
     private static void login() {

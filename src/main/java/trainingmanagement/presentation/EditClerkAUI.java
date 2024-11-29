@@ -10,19 +10,7 @@ public class EditClerkAUI extends GenericAUI<ExampleEditClerkC> {
         super(ExampleEditClerkC.class);
     }
 
-    public void open(final boolean editAsAdmin) {
-        final SelectClerkAUI selectClerkAUI = new SelectClerkAUI();
-        final String[] clerkNames = selectClerkAUI.getClerkNames();
-        if (clerkNames.length == 0) {
-            System.out.println("No clerks to edit");
-            return;
-        }
-        final String selectedClerk = selectClerkAUI.selectClerk();
-        this.editClerk(selectedClerk, editAsAdmin);
-    }
-
-
-    private void editClerk(final String selectedClerk, final boolean editAsAdmin) {
+    protected void editClerk(final String selectedClerk, final boolean editAsAdmin) {
         final String username = Input.getString("Enter username: ");
         final String password = Input.getString("Enter password: ");
         Boolean isAdmin;
@@ -33,5 +21,6 @@ public class EditClerkAUI extends GenericAUI<ExampleEditClerkC> {
         }
         this.executeAndHandleError(() -> this.control.updateClerk(selectedClerk, username, password, isAdmin));
     }
+
 
 }

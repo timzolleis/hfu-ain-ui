@@ -2,7 +2,7 @@ package trainingmanagement.presentation;
 
 import trainingmanagement.control.ExampleDeleteClerkC;
 
-public class DeleteClerkAUI extends GenericAUI<ExampleDeleteClerkC> {
+public class DeleteClerkAUI extends GenericAUI<ExampleDeleteClerkC> implements AUI{
     public DeleteClerkAUI() {
         super(ExampleDeleteClerkC.class);
     }
