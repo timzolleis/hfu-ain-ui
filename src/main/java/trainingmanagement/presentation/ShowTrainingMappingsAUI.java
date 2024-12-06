@@ -2,13 +2,15 @@ package trainingmanagement.presentation;
 
 import trainingmanagement.control.ExampleShowTrainingMappingC;
 
+import javax.swing.*;
+
 public class ShowTrainingMappingsAUI extends GenericAUI<ExampleShowTrainingMappingC> implements AUI {
 
     public ShowTrainingMappingsAUI() {
         super(ExampleShowTrainingMappingC.class);
     }
 
-    public void open() {
+    public void open(final JFrame frame) {
         final SelectClerkAUI selectClerkAUI = new SelectClerkAUI();
         final String clerk = selectClerkAUI.selectClerk();
         try {

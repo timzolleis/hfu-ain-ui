@@ -2,12 +2,14 @@ package trainingmanagement.presentation;
 
 import trainingmanagement.control.ExampleDeleteClerkC;
 
-public class DeleteClerkAUI extends GenericAUI<ExampleDeleteClerkC> implements AUI{
+import javax.swing.*;
+
+public class DeleteClerkAUI extends GenericAUI<ExampleDeleteClerkC> implements AUI {
     public DeleteClerkAUI() {
         super(ExampleDeleteClerkC.class);
     }
 
-    public void open() {
+    public void open(final JFrame frame) {
         final SelectClerkAUI selectClerkAUI = new SelectClerkAUI();
         final String[] clerkNames = selectClerkAUI.getClerkNames();
         if (clerkNames.length == 0) {

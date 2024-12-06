@@ -1,8 +1,9 @@
 package trainingmanagement.presentation;
 
+import javax.swing.*;
 import java.util.function.Supplier;
 
-public class GenericAUI<T> {
+public class GenericAUI<T> extends JPanel {
     protected final T control;
 
     public GenericAUI(Class<T> clazz) {
@@ -14,13 +15,25 @@ public class GenericAUI<T> {
     }
 
     protected void handleErrorMessage(final String errorMessage) {
-        if (errorMessage != null) {
-            System.out.println("\u001B[31mError: " + errorMessage + "\u001B[0m");
-        }
+        //Show error message pop-up
+        JOptionPane.showMessageDialog(null, errorMessage, "Error", JOptionPane.ERROR_MESSAGE);
     }
 
     protected void executeAndHandleError(Supplier<String> action) {
         String errorMessage = action.get();
         handleErrorMessage(errorMessage);
+    }
+
+    protected void render(final JFrame frame) {
+        frame.add(this);
+        frame.revalidate();
+        frame.repaint();
+    }
+
+    public void close() {
+        final JFrame frame = (JFrame) SwingUtilities.getRoot(this);
+        frame.remove(this);
+        frame.revalidate();
+        frame.repaint();
     }
 }

@@ -1,8 +1,10 @@
 package trainingmanagement.presentation;
 
-public class ExitAUI implements AUI{
+import javax.swing.*;
+
+public class ExitAUI implements AUI {
     @Override
-    public void open() {
+    public void open(final JFrame frame) {
         System.exit(0);
     }
 }

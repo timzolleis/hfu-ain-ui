@@ -3,13 +3,15 @@ package trainingmanagement.presentation;
 import task02.Input;
 import trainingmanagement.control.ExampleMapTrainingC;
 
+import javax.swing.*;
+
 public class MapTrainingAUI extends GenericAUI<ExampleMapTrainingC> implements AUI{
 
     public MapTrainingAUI() {
         super(ExampleMapTrainingC.class);
     }
 
-    public void open() {
+    public void open(final JFrame frame) {
         final SelectClerkAUI selectClerkAUI = new SelectClerkAUI();
         final SelectTrainingAUI selectTrainingAUI = new SelectTrainingAUI();
 

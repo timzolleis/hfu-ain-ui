@@ -1,21 +1,30 @@
 package trainingmanagement.presentation;
 
+import trainingmanagement.actions.GenericAction;
+
+import javax.swing.*;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
 public class NormalAI extends GenericAI {
 
     public NormalAI() {
-        super(getAvailableActions());
+        super("Clerk");
     }
 
-    private static Map<String, Class<? extends AUI>> getAvailableActions() {
+    protected Map<String, Class<? extends AUI>> getAvailableUseCases() {
         return Map.of(
-                "Edit a clerk", NormalEditClerkAUI.class,
-                "Map a training to a clerk", MapTrainingAUI.class,
-                "Delete a training mapping", DeleteTrainingMappingAUI.class,
-                "Show training mappings", ShowTrainingMappingsAUI.class,
+                "Edit", NormalEditClerkAUI.class,
+                "Map Training", MapTrainingAUI.class,
+                "Delete Training", DeleteTrainingMappingAUI.class,
+                "Show Trainings", ShowTrainingMappingsAUI.class,
                 "Logout", LogoutAUI.class
         );
+    }
+
+    @Override
+    protected List<GenericAction> getActions(JFrame frame) {
+        return List.of();
     }
 }
