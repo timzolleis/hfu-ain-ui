@@ -1,7 +1,7 @@
 package trainingmanagement.presentation;
 
 
-import trainingmanagement.actions.GenericAction;
+import trainingmanagement.actions.*;
 
 import javax.swing.*;
 import java.util.List;
@@ -27,6 +27,6 @@ public class AdminAI extends GenericAI {
 
     @Override
     protected List<GenericAction> getActions(final JFrame frame) {
-        return List.of();
+        return List.of(new CreateClerkAction(frame), new AdminEditClerkAction(frame), new AdminDeleteClerkAction(frame), new MapTrainingAction(frame));
     }
 }

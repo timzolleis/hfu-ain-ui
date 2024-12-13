@@ -13,9 +13,12 @@ public class DeleteTrainingMappingAUI extends GenericAUI<ExampleDeleteTrainingMa
     public void open(final JFrame frame) {
         final SelectClerkAUI selectClerkAUI = new SelectClerkAUI();
         final SelectTrainingAUI selectTrainingAUI = new SelectTrainingAUI();
-        final String clerk = selectClerkAUI.selectClerk();
-        final String training = selectTrainingAUI.selectTraining();
-        this.executeAndHandleError(() -> this.control.deleteTrainingMapping(clerk, training));
+        String selectedClerk ="";
+//        selectClerkAUI.selectClerk(frame, (choice) -> {
+//            selectedClerk = choice;
+//        });
+//        final String training = selectTrainingAUI.selectTraining();
+//        this.executeAndHandleError(() -> this.control.deleteTrainingMapping(selectedClerk, training));
     }
 
 }

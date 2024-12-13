@@ -4,6 +4,14 @@ import trainingmanagement.entity.Clerk;
 
 public class ExampleEditClerkC {
 
+    public final Boolean isCurrentlyAdmin(final String username) {
+        return Clerk.getClerk(username).isAdmin();
+    }
+
+    public final String getCurrentPassword(final String username) {
+        return Clerk.getClerk(username).getPassword();
+    }
+
     public final String updateClerk(final String oldUsername, final String newUsername, final String password, final Boolean isAdmin) {
         final Clerk clerk = Clerk.getClerk(oldUsername);
         try {

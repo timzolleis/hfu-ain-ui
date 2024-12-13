@@ -7,6 +7,7 @@ import java.awt.event.KeyEvent;
 
 public abstract class GenericAction extends AbstractAction {
 
+
     public GenericAction(final String name, final String description, final int mnemonic) {
         putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(mnemonic, InputEvent.CTRL_DOWN_MASK));
         putValue(MNEMONIC_KEY, mnemonic);

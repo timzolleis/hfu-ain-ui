@@ -64,7 +64,14 @@ public class Form extends JPanel {
     }
 
     public void addField(final String key, final FormField<?> field) {
-        this.fields.put(key, field);
+        this.fields.put(key.toLowerCase(), field);
+    }
+
+    public final <T> FormField<T> getField(final String key) {
+        if (!this.fields.containsKey(key.toLowerCase())) {
+            throw new IllegalArgumentException("Field " + key + " not found");
+        }
+        return (FormField<T>) this.fields.get(key.toLowerCase());
     }
 
     public final Object getValue(final String key) {

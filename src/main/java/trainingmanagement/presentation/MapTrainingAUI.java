@@ -1,30 +1,43 @@
 package trainingmanagement.presentation;
 
 import task02.Input;
+import trainingmanagement.components.Form;
+import trainingmanagement.components.FormField;
+import trainingmanagement.components.RadioButtonGroup;
+import trainingmanagement.components.TrainingSelector;
 import trainingmanagement.control.ExampleMapTrainingC;
 
 import javax.swing.*;
 
-public class MapTrainingAUI extends GenericAUI<ExampleMapTrainingC> implements AUI{
+public class MapTrainingAUI extends GenericAUI<ExampleMapTrainingC> implements AUI {
 
     public MapTrainingAUI() {
         super(ExampleMapTrainingC.class);
+        final Form form = new Form("Map Training");
+        final FormField<String> selectedTraining = new TrainingSelector("Training");
+        final FormField<String> trainingType = new FormField<>("Training Type", new RadioButtonGroup(new String[]{"Attend", "Complete"}));
+        form.addField("training", selectedTraining);
+        form.addField("type", trainingType);
+        form.setOnCancel(this::close);
+        form.setOnSubmit(this::handleSubmit);
+        form.render();
+        this.add(form);
     }
 
     public void open(final JFrame frame) {
         final SelectClerkAUI selectClerkAUI = new SelectClerkAUI();
-        final SelectTrainingAUI selectTrainingAUI = new SelectTrainingAUI();
+        selectClerkAUI.selectClerk(frame, (choice) -> {
+            this.showForm(frame, choice);
+        });
 
-        final String clerk = selectClerkAUI.selectClerk();
-        final String training = selectTrainingAUI.selectTraining();
-        final int choice = Input.getInteger("Enter 1 to attend training or 2 to complete training");
-        final boolean isCompleted = choice == 2;
-        if (isCompleted) {
-            this.executeAndHandleError(() -> this.control.completeTraining(clerk, training));
-        } else {
-            this.executeAndHandleError(() -> this.control.attendTraining(clerk, training));
-        }
+    }
 
+    private void handleSubmit(final Form form) {
+        this.close();
+    }
+
+    private void showForm(final JFrame frame, final String selectedClerk) {
+        this.render(frame);
     }
 
 }

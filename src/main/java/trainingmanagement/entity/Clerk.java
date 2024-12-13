@@ -92,9 +92,13 @@ public class Clerk {
     }
 
     public void setUsername(final String username) {
-        if (Clerk.usernameExists(username)) {
+        if (Clerk.usernameExists(username) && !username.equals(this.username)) {
             throw new InvalidUsernameException("Username already exists");
         }
+        if (!Clerk.validUsername(username)) {
+            throw new InvalidUsernameException("Username does not match criteria");
+        }
+        Clerk.allClerks.remove(this.username);
         this.username = username;
         Clerk.allClerks.put(username, this);
     }

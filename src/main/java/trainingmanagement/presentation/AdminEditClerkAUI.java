@@ -1,8 +1,5 @@
 package trainingmanagement.presentation;
 
-import task02.Input;
-import trainingmanagement.control.ExampleEditClerkC;
-
 import javax.swing.*;
 
 public class AdminEditClerkAUI extends EditClerkAUI implements AUI {
@@ -11,11 +8,13 @@ public class AdminEditClerkAUI extends EditClerkAUI implements AUI {
         final SelectClerkAUI selectClerkAUI = new SelectClerkAUI();
         final String[] clerkNames = selectClerkAUI.getClerkNames();
         if (clerkNames.length == 0) {
-            System.out.println("No clerks to edit");
+            this.handleErrorMessage("No clerks to edit");
+            this.close();
             return;
         }
-        final String selectedClerk = selectClerkAUI.selectClerk();
-        this.editClerk(selectedClerk, true);
+        selectClerkAUI.selectClerk(frame, (selectedClerk) -> {
+            this.editClerk(frame, selectedClerk, true);
+        });
     }
 
 

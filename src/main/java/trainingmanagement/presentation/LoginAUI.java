@@ -17,7 +17,7 @@ public class LoginAUI extends GenericAUI<LoginC> implements AUI {
 
         final FormField<String> usernameField = new FormField<>("Username", new TextField());
         final FormField<String> passwordField = new FormField<>("Password", new PasswordField());
-        final FormField<String> roleCombobox = new FormField<>("Role", new Combobox<>(new String[]{"User", "Admin"}));
+        final FormField<String> roleCombobox = new RoleSelector("Role");
 
         final Form form = new Form("Login");
         form.addField("username", usernameField);
@@ -41,7 +41,7 @@ public class LoginAUI extends GenericAUI<LoginC> implements AUI {
         if (loginResult == null) {
             final GenericAI aui = Objects.equals(data.getRole(), "Admin") ? new AdminAI() : new NormalAI();
             aui.open();
-            this.close();
+            this.closeFrame();
         } else {
             this.handleErrorMessage(loginResult);
         }

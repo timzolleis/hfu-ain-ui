@@ -1,6 +1,7 @@
 package trainingmanagement.presentation;
 
 import trainingmanagement.actions.GenericAction;
+import trainingmanagement.actions.NormalEditClerkAction;
 
 import javax.swing.*;
 import java.util.List;
@@ -25,6 +26,6 @@ public class NormalAI extends GenericAI {
 
     @Override
     protected List<GenericAction> getActions(JFrame frame) {
-        return List.of();
+        return List.of(new NormalEditClerkAction(frame));
     }
 }

@@ -18,5 +18,13 @@ public class FormField<T> extends JPanel {
         return input.getValue();
     }
 
+    public void setDefaultValue(T value) {
+        input.setDefaultValue(value);
+    }
+
+
+    public void setEnabled(boolean enabled) {
+        input.setEnabled(enabled);
+    }
 
 }

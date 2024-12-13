@@ -12,21 +12,21 @@ public class ShowTrainingMappingsAUI extends GenericAUI<ExampleShowTrainingMappi
 
     public void open(final JFrame frame) {
         final SelectClerkAUI selectClerkAUI = new SelectClerkAUI();
-        final String clerk = selectClerkAUI.selectClerk();
-        try {
-            final String[] completedTrainingNames = control.getCompletedTrainingNames(clerk);
-            final String[] attendedTrainingNames = control.getAttendedTrainingNames(clerk);
-            System.out.println("Completed training:");
-            for (final String trainingName : completedTrainingNames) {
-                System.out.println(trainingName);
-            }
-            System.out.println("Attended training:");
-            for (final String trainingName : attendedTrainingNames) {
-                System.out.println(trainingName);
-            }
-        } catch (Exception e) {
-            System.out.println("Failed to show training mappings: " + e.getMessage());
-        }
+//        final String clerk = selectClerkAUI.selectClerk(frame, () -> {});
+//        try {
+//            final String[] completedTrainingNames = control.getCompletedTrainingNames(clerk);
+//            final String[] attendedTrainingNames = control.getAttendedTrainingNames(clerk);
+//            System.out.println("Completed training:");
+//            for (final String trainingName : completedTrainingNames) {
+//                System.out.println(trainingName);
+//            }
+//            System.out.println("Attended training:");
+//            for (final String trainingName : attendedTrainingNames) {
+//                System.out.println(trainingName);
+//            }
+//        } catch (Exception e) {
+//            System.out.println("Failed to show training mappings: " + e.getMessage());
+//        }
     }
 
 }
