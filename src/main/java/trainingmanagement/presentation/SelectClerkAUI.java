@@ -26,16 +26,19 @@ public class SelectClerkAUI extends GenericAUI<ExampleSelectClerkC> {
         final JDialog dialog = new JDialog(parentFrame, "Select Clerk", true);
         dialog.setLayout(new BorderLayout());
         dialog.add(form, BorderLayout.CENTER);
-        form.setOnCancel(dialog::dispose);
+        form.setOnCancel(() -> {
+            dialog.dispose();
+            parentFrame.repaint();
+        });
         form.setOnSubmit(submitted -> {
             handleSelection(submitted, onClerkSelection);
             dialog.dispose();
+            parentFrame.repaint();
         });
         form.render();
         dialog.pack();
         dialog.setLocationRelativeTo(parentFrame);
         dialog.setVisible(true);
-        this.render(parentFrame);
     }
 
     private void handleSelection(final Form form, final Consumer<String> onClerkSelection) {

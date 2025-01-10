@@ -17,7 +17,7 @@ public abstract class GenericAI extends JFrame {
     protected final JMenuBar createMenuBar(final String menuName) {
         final JMenuBar menuBar = new JMenuBar();
         final JMenu menu = new JMenu(menuName);
-        this.getActions(this).stream().sorted(Comparator.comparing(GenericAction::getName)).forEach(action -> {
+        this.getActions(this).forEach(action -> {
             final JMenuItem menuItem = new JMenuItem(action);
             menu.add(menuItem);
         });
@@ -29,6 +29,13 @@ public abstract class GenericAI extends JFrame {
         this.setSize(800, 600);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
+    }
+
+
+    protected JToolBar getToolbar(final JFrame frame) {
+        final JToolBar toolbar = new JToolBar();
+        this.getActions(frame).forEach(action -> toolbar.add(new JButton(action)));
+        return toolbar;
     }
 
     protected final JFrame getFrame() {

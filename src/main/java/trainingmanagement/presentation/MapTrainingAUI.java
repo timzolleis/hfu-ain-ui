@@ -6,10 +6,15 @@ import trainingmanagement.components.FormField;
 import trainingmanagement.components.RadioButtonGroup;
 import trainingmanagement.components.TrainingSelector;
 import trainingmanagement.control.ExampleMapTrainingC;
+import trainingmanagement.schema.MapTrainingSchema;
+import trainingmanagement.schema.ParseResult;
 
 import javax.swing.*;
+import java.util.Objects;
 
 public class MapTrainingAUI extends GenericAUI<ExampleMapTrainingC> implements AUI {
+
+    private String selectedClerk;
 
     public MapTrainingAUI() {
         super(ExampleMapTrainingC.class);
@@ -33,10 +38,24 @@ public class MapTrainingAUI extends GenericAUI<ExampleMapTrainingC> implements A
     }
 
     private void handleSubmit(final Form form) {
-        this.close();
+        final ParseResult<MapTrainingSchema> parseResult = form.parse(MapTrainingSchema.class);
+        if (parseResult.hasErrors()) {
+            final String errorMessage = String.join("\n", parseResult.getErrors());
+            this.handleErrorMessage(errorMessage);
+            return;
+        }
+        final MapTrainingSchema data = parseResult.getResult();
+        this.executeAndHandleErrorWithCallback(() -> {
+            if (Objects.equals(data.getType(), "Attend")) {
+                return this.control.attendTraining(this.selectedClerk, data.getTraining());
+            } else {
+                return this.control.completeTraining(this.selectedClerk, data.getTraining());
+            }
+        }, this::close);
     }
 
     private void showForm(final JFrame frame, final String selectedClerk) {
+        this.selectedClerk = selectedClerk;
         this.render(frame);
     }
 

@@ -1,6 +1,9 @@
 package trainingmanagement.control;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import trainingmanagement.entity.Clerk;
 import trainingmanagement.entity.Training;
@@ -33,8 +36,6 @@ public class ExampleDeleteTrainingMappingC {
             return null;
         }
         return error;
-
-
     }
 
     public final String[] getAttendedTrainings(final String selectedUsername) {
@@ -43,6 +44,17 @@ public class ExampleDeleteTrainingMappingC {
 
     public final String[] getCompletedTrainings(final String selectedUsername) {
         return new ExampleShowTrainingMappingC().getCompletedTrainingNames(selectedUsername);
+    }
+
+    public final String[] getDeletableTrainings(final String selectedUsername) {
+        final Collection<Training> attendedTrainings = Clerk.getClerk(selectedUsername).getAttendedTrainings().values();
+        final Collection<Training> completedTrainings = Clerk.getClerk(selectedUsername).getCompletedTrainings().values();
+        final List<Training> deletableCompletedTrainings = completedTrainings.stream().filter(training -> this.checkCanDeleteTrainingMapping(Clerk.getClerk(selectedUsername), training) == null).toList();
+
+        final List<Training> deletableTrainings = new ArrayList<>(attendedTrainings);
+        deletableTrainings.addAll(deletableCompletedTrainings);
+        return deletableTrainings.stream().map(Training::getName).toArray(String[]::new);
+
     }
 
 }

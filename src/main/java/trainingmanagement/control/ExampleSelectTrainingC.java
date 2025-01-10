@@ -12,7 +12,6 @@ public class ExampleSelectTrainingC {
         return Training.getAllNames();
     }
 
-    public final String[]
 
     public final String[] getTrainingNamesToAttend(final String username) {
         final Clerk clerk = Clerk.getClerk(username);

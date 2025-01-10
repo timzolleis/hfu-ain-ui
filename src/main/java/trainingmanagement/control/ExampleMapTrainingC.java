@@ -18,6 +18,7 @@ public class ExampleMapTrainingC {
             return "The training " + trainingName + " requires the training " + requiredTraining.getName() + " to be completed first.";
         }
         clerk.addAttendedTraining(training);
+        clerk.getAttendedTrainings().forEach((key, value) -> System.out.println(key + " " + value));
         return null;
     }
 

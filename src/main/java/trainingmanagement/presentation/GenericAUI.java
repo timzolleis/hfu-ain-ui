@@ -1,6 +1,7 @@
 package trainingmanagement.presentation;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.function.Supplier;
 
 public class GenericAUI<T> extends JPanel {
@@ -37,8 +38,21 @@ public class GenericAUI<T> extends JPanel {
 
     protected void render(final JFrame frame) {
         frame.add(this);
+        this.closeOtherPanels(frame);
         frame.revalidate();
         frame.repaint();
+    }
+
+    protected void closeOtherPanels(final JFrame frame) {
+        final Container contentPane = frame.getContentPane();
+        for (Component component : contentPane.getComponents()) {
+            if (component != this && component instanceof JPanel) {
+                frame.remove(component);
+            }
+        }
+        contentPane.revalidate();
+        contentPane.repaint();
+
     }
 
     public void close() {
