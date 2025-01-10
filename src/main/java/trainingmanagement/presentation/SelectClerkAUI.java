@@ -36,6 +36,7 @@ public class SelectClerkAUI extends GenericAUI<ExampleSelectClerkC> {
             parentFrame.repaint();
         });
         form.render();
+        dialog.setPreferredSize(new Dimension(400, 200));
         dialog.pack();
         dialog.setLocationRelativeTo(parentFrame);
         dialog.setVisible(true);

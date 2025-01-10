@@ -10,7 +10,7 @@ public class DeleteTrainingMappingAction extends GenericAction{
     private final JFrame jFrame;
 
     public DeleteTrainingMappingAction(final JFrame jFrame) {
-        super("Delete training", "Delete a training from a clerk", KeyEvent.VK_M);
+        super("Delete training", "Delete a training from a clerk", KeyEvent.VK_R);
         this.jFrame = jFrame;
     }
 

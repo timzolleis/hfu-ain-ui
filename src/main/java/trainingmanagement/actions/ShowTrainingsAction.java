@@ -13,7 +13,7 @@ public class ShowTrainingsAction extends GenericAction{
     private final JFrame jFrame;
 
     public ShowTrainingsAction(final JFrame jFrame) {
-        super("Show trainings", "Show the trainings of a clerk", KeyEvent.VK_M);
+        super("Show trainings", "Show the trainings of a clerk", KeyEvent.VK_S);
         this.jFrame = jFrame;
     }
 
